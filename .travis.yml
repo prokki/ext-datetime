@@ -13,7 +13,8 @@ script:
   - phpunit --bootstrap vendor/autoload.php --whitelist=src/ --coverage-clover=coverage.xml tests/
 
 after_success:
-  - bash <(curl -s --connect-timeout 300 --max-time 330 https://codecov.io/bash)
+  # https://github.com/codecov/codecov-python/issues/158 or https://github.com/mapbox/mapbox-gl-native/issues/15095
+  - bash <(curl -s --connect-timeout 300 --max-time 330 --retry 5 --retry-delay 5 https://codecov.io/bash)
 
 notifications:
   email: true
