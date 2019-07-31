@@ -229,7 +229,7 @@ use ExtDateTime\DateTime;
 
 // create a datetime object and sets the time to the end of the day
 $datetimeFuture = DateTime::create("2020-07-30 12:35:17")
-                  ->toEndOfDay(10)
+                  ->toEndOfDay()
                   ->format("Y-m-d h:i:s");                   // "2020-07-30 23:59:59"
 ```
 
@@ -242,7 +242,7 @@ use ExtDateTime\DateTime;
 
 // create a datetime object and sets the time to noon
 $datetimeFuture = DateTime::create("2020-07-30 12:35:17")
-                  ->toNoon(10)
+                  ->toNoon()
                   ->format("Y-m-d h:i:s");                   // "2020-07-30 12:00:00"
 ```
 
@@ -255,7 +255,7 @@ use ExtDateTime\DateTime;
 
 // create a datetime object and sets the time the start of the day
 $datetimeFuture = DateTime::create("2020-07-30 12:35:17")
-                  ->toStartOfDay(10)
+                  ->toStartOfDay()
                   ->format("Y-m-d h:i:s");                   // "2020-07-30 00:00:00"
 ```
 
