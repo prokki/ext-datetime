@@ -13,7 +13,7 @@ script:
   - phpunit --bootstrap vendor/autoload.php --whitelist=src/ --coverage-clover=coverage.xml tests/
 
 after_success:
-  - bash <(curl -s https://codecov.io/bash)
+  - bash <(curl -s --connect-timeout 300 --max-time 330 https://codecov.io/bash)
 
 notifications:
   email: true
