@@ -10,7 +10,7 @@ install:
   - composer update $DEFAULT_COMPOSER_FLAGS
 
 script:
-  - phpunit --bootstrap vendor/autoload.php --coverage-clover=coverage.xml tests/
+  - phpunit --bootstrap vendor/autoload.php --whitelist=src/ --coverage-clover=coverage.xml tests/
 
 after_success:
   - bash <(curl -s https://codecov.io/bash)
