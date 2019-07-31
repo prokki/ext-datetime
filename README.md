@@ -1,13 +1,20 @@
 ## Ext-DateTime
 
-[![LICENSE](https://img.shields.io/badge/release-0.0.0-blue.svg?style=flat)](hhttps://github.com/prokki/ext-datetime/releases/tag/0.0.0)
-[![Packagist](https://img.shields.io/badge/Packagist-0.0.0-blue.svg?style=flat)](https://packagist.org/packages/prokki/ext-datetime)
+[![LICENSE](https://img.shields.io/badge/release-0%2E0%2E0-blue.svg?style=flat)](hhttps://github.com/prokki/ext-datetime/releases/tag/0.0.0)
+[![Packagist](https://img.shields.io/badge/Packagist-0%2E0%2E0-blue.svg?style=flat)](https://packagist.org/packages/prokki/ext-datetime)
 [![LICENSE](https://img.shields.io/badge/License-MIT-blue.svg?style=flat)](LICENSE)
-[![PHP v7.3](https://img.shields.io/badge/PHP-%E2%89%A57.3-0044aa.svg)](https://www.php.net/manual/en/migration73.new-features.php)
+[![PHP v7.3](https://img.shields.io/badge/PHP-%E2%89%A57%2E3-0044aa.svg)](https://www.php.net/manual/en/migration73.new-features.php)
 [![codecov](https://codecov.io/gh/prokki/ext-datetime/branch/master/graph/badge.svg)](https://codecov.io/gh/prokki/ext-datetime)
 [![Build Status](https://travis-ci.org/prokki/ext-datetime.svg?branch=master)](https://travis-ci.org/prokki/ext-datetime)
 
 Extends the native datetime objects ([\DateTime](https://www.php.net/manual/en/class.datetime.php) and [\DateTimeImmutable](https://www.php.net/manual/en/class.datetimeimmutable.php)) with a lot of additional helpful methods.
+
+Most of the new methods are **short cuts of already existing functionality**
+to avoid (re-)initialization of necessary parameter if you would use the native classes.
+But these methods will help you to save time and code if you need to handle a lot of
+date- and time-operations.
+
+All new methods support [*method chaining*](https://stackoverflow.com/questions/3724112/php-method-chaining). 
 
 ### Table of Contents
 
@@ -58,7 +65,8 @@ $dateTimeImmutable = new DateTimeImmutable("now");
 #### Static Initialization
 
 Similar to the native objects there are several others ways to create a datetime object.
-All static methods can be used to implement **chaining**. 
+
+All static methods can be used to implement [*method chaining*](https://stackoverflow.com/questions/3724112/php-method-chaining). 
 
 ##### create()
 
@@ -101,7 +109,7 @@ $datetime = DateTimeImmutable::createFromObject(new \DateTime());
 
 #### Cloning
 
-Two new methods adds the availability to use chaining after cloning an object.
+Two new methods add the availability to use chaining directly after cloning an object.
 
 ##### duplicate()
 
@@ -131,16 +139,16 @@ use ExtDateTime\DateTimeImmutable;
 // create a datetime object
 $datetime = DateTime::current();
 
-$clonedImmutable = $datetime->toImmutable();     // only available in class DateTime
+$clonedImmutable = $datetime->toImmutable();       // only available in class DateTime
 
-$clonedMutable = $clonedImmutable->toMutable();  // only available in class DateTimeImmutable
+$clonedMutable   = $clonedImmutable->toMutable();  // only available in class DateTimeImmutable
 ```
 
 
 
 #### Manipulating
 
-Most of the new methods are just short cuts to avoid re-initialization of necessary parameter objects.
+Most of the new methods are short cuts to avoid re-initialization of necessary parameter in your code.
 
 ##### addHours() / subHours()
 
@@ -263,7 +271,7 @@ $datetimeFuture = DateTime::create("2020-07-30 12:35:17")
 
 ##### toEndOfMonth()
 
-Sets the date to the last day of the month and additionally the time to the end of the day (`23:59:59`).
+Sets the date to the last day of the month and additionally the time to the end of the day (*23:59:59*).
 
 ```php
 use ExtDateTime\DateTime;
