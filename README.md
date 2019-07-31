@@ -22,13 +22,13 @@ Extends the native datetime objects ([\DateTime](https://www.php.net/manual/en/c
 
 ### Requirements
 
-The usage of **PHP v7.3** is obligatory.
+The usage of [**PHP v7.3**](https://www.php.net/manual/en/migration73.new-features.php) is obligatory.
 
 
 
 ### Integration
 
-Install via [composer](https://getcomposer.org/):
+Please install via [composer](https://getcomposer.org/).
 
 ```bash
 composer require prokki/ext-datetime "^0.0"
@@ -38,8 +38,10 @@ composer require prokki/ext-datetime "^0.0"
 
 ### Usage
 
-The [ExtDateTime/DateTime](src/DateTime.php) and [ExtDateTime/DateTimeImmutable](src/DateTimeImmutable.php) classes can be used
-exactly like the native datetime objects.
+The classes and instances of the classes [ExtDateTime/DateTime](src/DateTime.php) and [ExtDateTime/DateTimeImmutable](src/DateTimeImmutable.php) can be used
+exactly like native datetime objects/classes.
+
+Example
 
 ```php
 use ExtDateTime\DateTime;
