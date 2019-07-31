@@ -1,4 +1,4 @@
-## Ext-DateTime
+# Ext-DateTime
 
 [![LICENSE](https://img.shields.io/badge/release-0%2E0%2E0-blue.svg?style=flat)](hhttps://github.com/prokki/ext-datetime/releases/tag/0.0.0)
 [![Packagist](https://img.shields.io/badge/Packagist-0%2E0%2E0-blue.svg?style=flat)](https://packagist.org/packages/prokki/ext-datetime)
@@ -9,14 +9,13 @@
 
 Extends the native datetime objects ([\DateTime](https://www.php.net/manual/en/class.datetime.php) and [\DateTimeImmutable](https://www.php.net/manual/en/class.datetimeimmutable.php)) with a lot of additional helpful methods.
 
-Most of the new methods are **short cuts of already existing functionality**
-to avoid (re-)initialization of necessary parameter if you would use the native classes.
-But these methods will help you to save time and code if you need to handle a lot of
-date- and time-operations.
+Most of the new methods are **short cuts of already existing functionality**.
+But these methods will help you to save time and code if you need to handle
+a many date- and time-operations.
 
 All new methods support [*method chaining*](https://stackoverflow.com/questions/3724112/php-method-chaining). 
 
-### Table of Contents
+## Table of Contents
 
 * [Requirements](#requirements)
 * [Integration](#integration)
@@ -24,16 +23,17 @@ All new methods support [*method chaining*](https://stackoverflow.com/questions/
   * [Static Initialization](#static-initialization)
   * [Cloning](#cloning)
   * [Manipulating](#manipulating)
+  * [Instant Setter Methods](#instant-setter-methods)
 
 
 
-### Requirements
+## Requirements
 
 The usage of [**PHP v7.3**](https://www.php.net/manual/en/migration73.new-features.php) is obligatory.
 
 
 
-### Integration
+## Integration
 
 Please install via [composer](https://getcomposer.org/).
 
@@ -43,7 +43,7 @@ composer require prokki/ext-datetime "^0.0"
 
 
 
-### Usage
+## Usage
 
 The classes and instances of the classes [ExtDateTime/DateTime](src/DateTime.php) and [ExtDateTime/DateTimeImmutable](src/DateTimeImmutable.php) can be used
 exactly like native datetime objects/classes.
@@ -62,13 +62,13 @@ $dateTimeImmutable = new DateTimeImmutable("now");
 ```
 
 
-#### Static Initialization
+### Static Initialization
 
 Similar to the native objects there are several others ways to create a datetime object.
 
 All static methods can be used to implement [*method chaining*](https://stackoverflow.com/questions/3724112/php-method-chaining). 
 
-##### create()
+#### create()
 
 Use the static constructor `create()` to use chaining immediately.
 
@@ -83,7 +83,7 @@ $dateTime = DateTime::create("now")
             ;
 ```
 
-##### current()
+#### current()
 
 The static constructor `current()` returns a datetime object with the current date/time.
 But in opposite to `DateTime::create("now")` this method returns the object **with additional microtime**. 
@@ -95,7 +95,7 @@ $currentMicroseconds = DateTime::current()->format("u");         // output examp
 $noMicroseconds      = DateTime::create("now")->format("u");     // output always 000000
 ```
 
-##### createFromObject()
+#### createFromObject()
 
 Creates a new object from any datetime object implementing the [DateTimeInterface](https://www.php.net/manual/en/class.datetimeinterface.php).
 
@@ -107,11 +107,11 @@ $datetime = DateTimeImmutable::createFromObject(new \DateTime());
 ```
 
 
-#### Cloning
+### Cloning
 
 Two new methods add the availability to use chaining directly after cloning an object.
 
-##### duplicate()
+#### duplicate()
 
 This method is just a wrapper function for `clone`:
 
@@ -128,13 +128,12 @@ $clone = $datetime->duplicate()
          ;
 ```
 
-##### toImmutable() / toMutable()
+#### toImmutable() / toMutable()
 
 Instead of using static constructors ([DateTime::createFromImmutable](https://www.php.net/manual/en/datetime.createfromimmutable.php) or [DateTimeImmutable::createFromMutable](https://www.php.net/manual/en/datetimeimmutable.createfrommutable.php)) you can also use these new non-static methods.
 
 ```php
 use ExtDateTime\DateTime;
-use ExtDateTime\DateTimeImmutable;
 
 // create a datetime object
 $datetime = DateTime::current();
@@ -146,11 +145,11 @@ $clonedMutable   = $clonedImmutable->toMutable();  // only available in class Da
 
 
 
-#### Manipulating
+### Manipulating
 
 Most of the new methods are short cuts to avoid re-initialization of necessary parameter in your code.
 
-##### addHours() / subHours()
+#### addHours() / subHours()
 
 Adds or subtracts hours of a datetime object.
 
@@ -168,7 +167,7 @@ $datetimeFuture = DateTime::create("2020-07-30 12:35:17")
                   ->format("Y-m-d h:i:s");                   // "2020-07-30 02:35:17"
 ```
 
-##### addDays() / subHours()
+#### addDays() / subHours()
 
 Adds or subtracts days of a datetime object.
 
@@ -186,7 +185,7 @@ $datetimeFuture = DateTime::create("2020-07-30 12:35:17")
                   ->format("Y-m-d h:i:s");                   // "2020-07-20 02:35:17"
 ```
 
-##### addMonth() / subMonth()
+#### addMonth() / subMonth()
 
 Adds or subtracts months of a datetime object.
 
@@ -217,7 +216,11 @@ $datetimeFuture = DateTime::create("2020-07-30 12:35:17")
                   ->format("Y-m-d h:i:s");                   // "2020-07-20 02:35:17"
 ```
 
-##### toEndOfDay()
+
+
+### Instant Setter Methods
+
+#### toEndOfDay()
 
 Sets the time to the end of the day (*23:59:59*).
 
@@ -230,7 +233,7 @@ $datetimeFuture = DateTime::create("2020-07-30 12:35:17")
                   ->format("Y-m-d h:i:s");                   // "2020-07-30 23:59:59"
 ```
 
-##### toNoon()
+#### toNoon()
 
 Sets the time to noon (*12:00:00*).
 
@@ -243,7 +246,7 @@ $datetimeFuture = DateTime::create("2020-07-30 12:35:17")
                   ->format("Y-m-d h:i:s");                   // "2020-07-30 12:00:00"
 ```
 
-##### toStartOfDay()
+#### toStartOfDay()
 
 Sets the time to the start of the day  (*00:00:00*).
 
@@ -256,7 +259,7 @@ $datetimeFuture = DateTime::create("2020-07-30 12:35:17")
                   ->format("Y-m-d h:i:s");                   // "2020-07-30 00:00:00"
 ```
 
-##### toStartOfMonth()
+#### toStartOfMonth()
 
 Sets the date to the first day of the month and additionally the time to the start of the day (*00:00:00*).
 
@@ -269,7 +272,7 @@ $datetimeFuture = DateTime::create("2020-07-30 12:35:17")
                   ->format("Y-m-d h:i:s");                   // "2020-07-01 00:00:00"
 ```
 
-##### toEndOfMonth()
+#### toEndOfMonth()
 
 Sets the date to the last day of the month and additionally the time to the end of the day (*23:59:59*).
 
