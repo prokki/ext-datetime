@@ -1,0 +1,19 @@
+language: php
+php:
+  - 7.3
+
+env:
+  global:
+    - DEFAULT_COMPOSER_FLAGS="--no-interaction --no-ansi --no-progress --no-suggest"
+
+install:
+  - composer update $DEFAULT_COMPOSER_FLAGS
+
+script:
+  - phpunit tests/ --coverage-clover=coverage.xml
+
+after_success:
+  - bash <(curl -s https://codecov.io/bash)
+
+notifications:
+  email: true
